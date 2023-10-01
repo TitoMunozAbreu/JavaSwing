@@ -8,7 +8,6 @@ public class PantallaMenus extends JDialog {
     private JTable tableMenus;
     private JPanel tablePane;
     private JPanel navegacionPane;
-    private JList list1;
 
 
     public PantallaMenus() {
@@ -18,8 +17,8 @@ public class PantallaMenus extends JDialog {
         getRootPane().setDefaultButton(btnHome);
         ImageIcon img = new ImageIcon("C:\\Users\\34618\\IdeaProjects\\SegundoDam\\LifeStyleSwing\\src\\com\\example\\images\\icons8-heart-with-pulse-20.png");
         setIconImage(img.getImage());
-        setTitle("Papaya Life style");
-        setSize(550,450);
+        setTitle("Menu");
+        setSize(550,200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE );
 
@@ -27,5 +26,9 @@ public class PantallaMenus extends JDialog {
 
     public JTable getTableMenus() {
         return tableMenus;
+    }
+
+    public JButton getBtnHome() {
+        return btnHome;
     }
 }

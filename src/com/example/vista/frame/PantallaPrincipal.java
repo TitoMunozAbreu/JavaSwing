@@ -10,6 +10,7 @@ public class PantallaPrincipal extends JFrame{
     private JButton btnDatos;
     private JButton btnMenus;
     private JButton btnLogin;
+    private JLabel titulo;
 
 
     /**
@@ -22,7 +23,7 @@ public class PantallaPrincipal extends JFrame{
         this.setIconImage(img.getImage());
         setTitle("Papaya Life style");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(650,550);
+        setSize(600,350);
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -45,4 +46,5 @@ public class PantallaPrincipal extends JFrame{
     public JButton getBtnLogin() {
         return btnLogin;
     }
+
 }

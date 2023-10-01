@@ -1,6 +1,7 @@
 package com.example.controlador;
 
 import com.example.modelo.Cliente;
+import com.example.modelo.Menu;
 import com.example.vista.dialog.PantallaDatos;
 import com.example.vista.dialog.PantallaMenus;
 
@@ -23,7 +24,7 @@ public class MenusController implements ActionListener, WindowListener {
     private PantallaMenus pantallaMenus;
 
     public MenusController(){
-        System.out.println("Contructor pantalla datos excecuted");
+        System.out.println("Pantalla menus excecuted");
         //incializar el objeto
         this.pantallaMenus = new PantallaMenus();
         //activar los listeners de la actual pantalla
@@ -37,9 +38,10 @@ public class MenusController implements ActionListener, WindowListener {
 
     /**
      * Metodo para activar el listener de los botones de
-     * la pantalla login
+     * la pantalla Menu
      */
     private void addListenersPantallaController() {
+        this.pantallaMenus.getBtnHome().addActionListener(this);
         this.pantallaMenus.addWindowListener(this);
     }
 
@@ -54,10 +56,17 @@ public class MenusController implements ActionListener, WindowListener {
                 break;
         }
     }
+
+    /**
+     * Metodo para volver a la pantalla principal
+     */
     private void onHome() {
         this.pantallaMenus.dispose();
     }
 
+    /**
+     * Metodo para cerrar el dialog
+     */
     private void onCancel() {
         this.pantallaMenus.dispose();
     }
@@ -97,25 +106,28 @@ public class MenusController implements ActionListener, WindowListener {
 
     }
 
+    /**
+     * Clase MenuTableModel para definir los
+     * datos de la tabla
+     */
     private static class MenuTableModel extends AbstractTableModel {
-        private final String[] COLUMNS = {"Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"};
-        private List<String> menus;
+        private final String[] COLUMNS = {"Dia", "Comida"};
+        private List<Menu> menus;
 
         private MenuTableModel(){
             menus = List.of(
-                    "Arroz con frijoles negros",
-                    "Salmon con esparragos verdes",
-                    "Berenjenas rellenas",
-                    "Revuelto de verduras con huevo",
-                    "Pavo empanado",
-                    "Bacalao dorado",
-                    "Tortilla de patatas"
+                    new Menu("Lunes","Arroz con frijoles negros"),
+                    new Menu("Martes","Salmon con esparragos verdes"),
+                    new Menu("Miercoles","Berenjenas rellenas"),
+                    new Menu("Jueves","Revuelto de verduras con huevo"),
+                    new Menu("Viernes","Pavo empanado"),
+                    new Menu("Sabado","Bacalao dorado"),
+                    new Menu("Domingo","Tortilla de patatas")
             );
-
         }
         @Override
         public int getRowCount() {
-            return 1;
+            return menus.size();
         }
 
         @Override
@@ -126,13 +138,8 @@ public class MenusController implements ActionListener, WindowListener {
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             return switch (columnIndex){
-                case 0 -> menus.get(rowIndex).toString();
-                case 1 -> menus.get(rowIndex).toString();
-                case 2 -> menus.get(rowIndex).toString();
-                case 3 -> menus.get(rowIndex).toString();
-                case 4 -> menus.get(rowIndex).toString();
-                case 5 -> menus.get(rowIndex).toString();
-                case 6 -> menus.get(rowIndex).toString();
+                case 0 -> menus.get(rowIndex).getDia();
+                case 1 -> menus.get(rowIndex).getDescripcion();
                 default -> "-";
             };
         }

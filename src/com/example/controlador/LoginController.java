@@ -54,7 +54,6 @@ public class LoginController implements ActionListener, WindowListener {
      * Metodo para volver a la pantalla principal
      */
     private void onHome() {
-        //minimizar pantalla
         this.pantallaLogin.dispose();
     }
 
@@ -62,7 +61,6 @@ public class LoginController implements ActionListener, WindowListener {
      * Metodo para cerrar el dialog
      */
     private void onCancel() {
-        //minimizar pantalla
         this.pantallaLogin.dispose();
     }
 

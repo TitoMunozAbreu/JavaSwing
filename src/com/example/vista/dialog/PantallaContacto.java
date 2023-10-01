@@ -5,56 +5,31 @@ import java.awt.event.*;
 
 public class PantallaContacto extends JDialog {
     private JPanel contentPane;
+    private JPanel navegacionPane;
+    private JButton btnHome;
+    private JList contenido;
+    private JPanel contactoPane;
     private JButton buttonOK;
     private JButton buttonCancel;
 
     public PantallaContacto() {
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        getRootPane().setDefaultButton(btnHome);
+        ImageIcon img = new ImageIcon("C:\\Users\\34618\\IdeaProjects\\SegundoDam\\LifeStyleSwing\\src\\com\\example\\images\\icons8-heart-with-pulse-20.png");
+        setIconImage(img.getImage());
+        setTitle("Contacto");
+        setSize(400,150);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE );
     }
 
-    private void onOK() {
-        // add your code here
-        dispose();
+    public JButton getBtnHome() {
+        return btnHome;
     }
 
-    private void onCancel() {
-        // add your code here if necessary
-        dispose();
+    private void onHome() {
+       dispose();
     }
 
-    public static void main(String[] args) {
-        PantallaContacto dialog = new PantallaContacto();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }

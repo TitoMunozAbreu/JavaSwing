@@ -22,7 +22,7 @@ public class DatosController implements ActionListener, WindowListener {
     private PantallaDatos pantallaDatos;
 
     public DatosController(){
-        System.out.println("Contructor pantalla datos excecuted");
+        System.out.println("Pantalla datos excecuted");
         //incializar el objeto
         this.pantallaDatos = new PantallaDatos();
         //activar los listeners de la actual pantalla
@@ -36,9 +36,10 @@ public class DatosController implements ActionListener, WindowListener {
 
     /**
      * Metodo para activar el listener de los botones de
-     * la pantalla login
+     * la pantalla datos
      */
     private void addListenersPantallaDatos() {
+        this.pantallaDatos.getBtnHome().addActionListener(this);
         this.pantallaDatos.addWindowListener(this);
     }
 
@@ -53,10 +54,17 @@ public class DatosController implements ActionListener, WindowListener {
                 break;
         }
     }
+
+    /**
+     * Metodo para volver a la pantalla principal
+     */
     private void onHome() {
         this.pantallaDatos.dispose();
     }
 
+    /**
+     * Metodo para cerrar el dialog
+     */
     private void onCancel() {
         this.pantallaDatos.dispose();
     }
@@ -96,6 +104,10 @@ public class DatosController implements ActionListener, WindowListener {
 
     }
 
+    /**
+     * Clase ClienteTableModel para definir los
+     * datos de la tabla
+     */
     private static class ClienteTableModel extends AbstractTableModel{
         private final String[] COLUMNS = {"Nombre","Direccion","Movil"};
         private List<Cliente> clientes;
